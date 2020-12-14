@@ -28,6 +28,9 @@
     "help": "nx help"
   },
   "private": true,
+  "resolutions": {
+    "webpack": "5.10.0"
+  },
   "dependencies": {
     "@angular/animations": "^11.0.0",
     "@angular/common": "^11.0.0",
@@ -47,13 +50,16 @@
     "@angular/cli": "~11.0.0",
     "@angular/compiler-cli": "^11.0.0",
     "@angular/language-service": "^11.0.0",
+    "@ngneat/tailwind": "^3.0.6",
     "@nrwl/cli": "11.0.2",
+    "@nrwl/cypress": "11.0.2",
     "@nrwl/jest": "11.0.2",
     "@nrwl/tao": "11.0.2",
     "@nrwl/workspace": "11.0.2",
     "@types/jest": "26.0.8",
     "@types/node": "12.12.38",
     "codelyzer": "^6.0.0",
+    "cypress": "^5.5.0",
     "dotenv": "6.2.0",
     "eslint": "7.10.0",
     "jest": "26.2.2",
@@ -62,8 +68,6 @@
     "ts-jest": "26.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
-    "typescript": "~4.0.3",
-    "cypress": "^5.5.0",
-    "@nrwl/cypress": "11.0.2"
+    "typescript": "~4.0.3"
   }
 }

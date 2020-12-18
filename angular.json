@@ -8,7 +8,7 @@
       "prefix": "test-tailwind-antd",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/apps/shell",
             "index": "apps/shell/src/index.html",
@@ -16,9 +16,15 @@
             "polyfills": "apps/shell/src/polyfills.ts",
             "tsConfig": "apps/shell/tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/shell/src/favicon.ico", "apps/shell/src/assets"],
-            "styles": ["apps/shell/src/styles.scss"],
-            "scripts": []
+            "assets": [
+              "apps/shell/src/favicon.ico",
+              "apps/shell/src/assets"
+            ],
+            "styles": [
+              "apps/shell/src/styles.scss"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "apps/shell/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -46,18 +52,22 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "extraWebpackConfig": "apps/shell/webpack.prod.config.js"
             }
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "shell:build"
+            "browserTarget": "shell:build",
+            "extraWebpackConfig": "apps/shell/webpack.config.js",
+            "port": 4200
           },
           "configurations": {
             "production": {
-              "browserTarget": "shell:build:production"
+              "browserTarget": "shell:build:production",
+              "extraWebpackConfig": "apps/shell/webpack.prod.config.js"
             }
           }
         },
@@ -75,15 +85,21 @@
               "apps/shell/tsconfig.spec.json",
               "apps/shell/tsconfig.editor.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/shell/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/shell/**/*"
+            ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/shell"],
+          "builder": "ngx-build-plus:karma",
+          "outputs": [
+            "coverage/apps/shell"
+          ],
           "options": {
             "jestConfig": "apps/shell/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "extraWebpackConfig": "apps/shell/webpack.config.js"
           }
         }
       }
@@ -109,8 +125,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/shell-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/shell-e2e/**/*"]
+            "tsConfig": [
+              "apps/shell-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/shell-e2e/**/*"
+            ]
           }
         }
       }
